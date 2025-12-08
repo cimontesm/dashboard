@@ -5,9 +5,12 @@ import AlertUI from './components/AlertUI';
 import SelectorUI from './components/SelectorUI';
 import IndicatorUI from './components/IndicatorUI';
 import useFetchData from './functions/useFetchData';
+import TableUI from './components/TableUI';
+import ChartUI from './components/ChartUI';
 
 function App() {
   const { data, loading, error } = useFetchData();
+
 
   if (loading) {
     return <div>Loading...</div>;
@@ -20,7 +23,7 @@ function App() {
   if (!data) {
     return <p>No se encontraron datos.</p>;
   }
-  
+
   return (
     <Grid container spacing={5} justifyContent="center" alignItems="center">
 
@@ -54,10 +57,18 @@ function App() {
       </Grid>
 
       {/* Gráfico */}
-      <Grid size={{ xs: 12, md: 6 }} sx={{ display: { xs: "none", md: "block" } }} >Elemento: Gráfico</Grid>
+      <Grid size={{ xs: 12, md: 6 }} sx={{ display: { xs: "none", md: "block" } }} >
+        <ChartUI fecha={data.hourly.time.slice(0, 10)}
+          temperature={data.hourly.temperature_2m.slice(0, 10)}
+          wind_speed={data.hourly.wind_speed_10m.slice(0, 10)} />
+      </Grid>
 
       {/* Tabla */}
-      <Grid size={{ xs: 12, md: 6 }} sx={{ display: { xs: "none", md: "block" } }}>Elemento: Tabla</Grid>
+      <Grid size={{ xs: 12, md: 6 }} sx={{ display: { xs: "none", md: "block" } }}>
+        <TableUI fecha={data.hourly.time}
+          temperature={data.hourly.temperature_2m}
+          wind_speed={data.hourly.wind_speed_10m}
+        /></Grid>
 
       {/* Información adicional */}
       <Grid size={{ xs: 12, md: 12 }}>Elemento: Información adicional</Grid>
