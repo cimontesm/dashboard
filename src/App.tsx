@@ -7,10 +7,14 @@ import IndicatorUI from './components/IndicatorUI';
 import useFetchData from './functions/useFetchData';
 import TableUI from './components/TableUI';
 import ChartUI from './components/ChartUI';
+import { useState } from 'react';
 
 function App() {
-  const { data, loading, error } = useFetchData();
-
+  // Utilice una variable de estado para almacenar la opción seleccionada por el usuario
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const { data, loading, error } = useFetchData(selectedOption);
+  const horas = data?.hourly?.time ? data.hourly.time.map(t => t.split("T")[1]) : [];
+  const dia2 = data?.hourly?.time ? data.hourly.time.map(t => t.split("T")[0]) : [];
 
   if (loading) {
     return <div>Loading...</div>;
@@ -34,7 +38,7 @@ function App() {
       <Grid size={{ xs: 12, md: 12 }}><AlertUI description="No se preveen lluvias" /></Grid>
 
       {/* Selector */}
-      <Grid size={{ xs: 12, md: 3 }}><SelectorUI /></Grid>
+      <Grid size={{ xs: 12, md: 3 }}><SelectorUI onOptionSelect={setSelectedOption} /></Grid>
 
       {/* Indicadores */}
       <Grid container size={{ xs: 12, md: 9 }} >
@@ -65,9 +69,10 @@ function App() {
 
       {/* Tabla */}
       <Grid size={{ xs: 12, md: 6 }} sx={{ display: { xs: "none", md: "block" } }}>
-        <TableUI fecha={data.hourly.time}
+        <TableUI fecha={horas}
           temperature={data.hourly.temperature_2m}
           wind_speed={data.hourly.wind_speed_10m}
+          dia={dia2}
         /></Grid>
 
       {/* Información adicional */}
