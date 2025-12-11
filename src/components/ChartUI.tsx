@@ -17,8 +17,8 @@ export default function ChartUI(props: ChartUIProps) {
             <LineChart
                 height={300}
                 series={[
-                    { data: props.temperature, label: 'Temperature 2m' },
-                    { data: props.wind_speed, label: 'Wind Speed 10m' },
+                    { data: props.temperature, label: 'Temperature 2m', color: '#ff00f2ff' },
+                    { data: props.wind_speed, label: 'Wind Speed 10m', color: '#9000e4ff' },
                 ]}
                 xAxis={[{ scaleType: 'point', data: props.fecha }]}
             />

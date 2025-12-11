@@ -59,9 +59,10 @@ export default function TableUI(props: TabletUIProps) {
             rows={rows}
             columns={columns}
              sx={{
+               background: '#f6feffff',
                border: 'none',
                "& .MuiDataGrid-columnHeaders": {
-                  backgroundColor: "#486e94ff",
+                  backgroundColor: "#8babcaff",
                   color: "#5c3d94ff",
                   fontSize: "1rem",
                },
