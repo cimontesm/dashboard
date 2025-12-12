@@ -1,6 +1,7 @@
 import Box from '@mui/material/Box';
-import { cyan } from '@mui/material/colors';
 import { DataGrid, type GridColDef } from '@mui/x-data-grid';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import type { } from '@mui/x-data-grid/themeAugmentation';
 
 function combineArrays(arrLabels: Array<string>, arrValues1: Array<number>, arrValues2: Array<number>, arrDia: Array<string>) {
    return arrLabels.map((label, index) => ({
@@ -46,43 +47,53 @@ interface TabletUIProps {
    dia: string[];
 }
 
+const theme = createTheme({
+   colorSchemes: {
+      light: {
+         palette: {
+            DataGrid: {
+               bg: '#fcfcf8ff',
+               pinnedBg: '#f6f9f1ff',
+               headerBg: '#f5f5eaff',
+            },
+         },
+      },
+      dark: {
+         palette: {
+            DataGrid: {
+               bg: '#3c3355ff',
+               pinnedBg: '#322948ff',
+               headerBg: '#271e3bff',
+            },
+         },
+      },
+   },
+});
 
 export default function TableUI(props: TabletUIProps) {
 
    const rows = combineArrays(props.fecha, props.temperature, props.wind_speed, props.dia);
 
    return (
-      <Box sx={{
-         height: 350, width: '100%'
-      }}>
-         <DataGrid
-            rows={rows}
-            columns={columns}
-             sx={{
-               background: '#f6feffff',
-               border: 'none',
-               "& .MuiDataGrid-columnHeaders": {
-                  backgroundColor: "#8babcaff",
-                  color: "#5c3d94ff",
-                  fontSize: "1rem",
-               },
-               "& .MuiDataGrid-row:hover": {
-                  backgroundColor: "#82a6c0ff",
-               },
-               "& .MuiDataGrid-cell": {
-                  fontSize: "0.95rem",
-               }
-            }}
-            initialState={{
-               pagination: {
-                  paginationModel: {
-                     pageSize: 5,
+      <ThemeProvider theme={theme}>
+         <Box sx={{
+            height: 350, width: '100%'
+         }}>
+            <DataGrid
+               rows={rows}
+               columns={columns}
+
+               initialState={{
+                  pagination: {
+                     paginationModel: {
+                        pageSize: 5,
+                     },
                   },
-               },
-            }}
-            pageSizeOptions={[5]}
-            disableRowSelectionOnClick
-         />
-      </Box>
+               }}
+               pageSizeOptions={[5]}
+               disableRowSelectionOnClick
+            />
+         </Box>
+      </ThemeProvider>
    );
 }

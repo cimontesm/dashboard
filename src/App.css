@@ -8,14 +8,15 @@
 /* ----------- Fondo de noche ----------- */
 .bg-night {
   min-height: 100vh;
-  background: linear-gradient(to bottom, #615A9E, #835A9E , #9E5A97 );
+  background: linear-gradient(to bottom, #615A9E, #835A9E, #9E5A97);
   transition: background 1.5s ease-in-out;
   position: relative;
   overflow: hidden;
   --text-color: #ffddeb;
 }
 
-body, h1 {
+body,
+h1 {
   color: var(--text-color);
 }
 
@@ -65,4 +66,3 @@ body,
   min-height: 100%;
   text-align: center;
 }
-

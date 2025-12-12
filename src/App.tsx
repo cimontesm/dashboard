@@ -51,10 +51,10 @@ function App() {
             <Grid size={{ xs: 12, md: 12 }}><HeaderUI /></Grid>
 
             {/* Alertas */}
-            <Grid size={{ xs: 12, md: 12 }} bgcolor={'#69ad6d8c'} borderRadius={1}><AlertUI description="No se preveen lluvias" /></Grid>
+            <Grid size={{ xs: 12, md: 12 }} borderRadius={1}><AlertUI description="No se preveen lluvias" /></Grid>
 
             {/* Selector */}
-            <Grid size={{ xs: 12, md: 3 }} bgcolor={'#b13e8eff'} borderRadius={1}><SelectorUI onOptionSelect={setSelectedOption} /></Grid>
+            <Grid size={{ xs: 12, md: 3 }} borderRadius={1}><SelectorUI onOptionSelect={setSelectedOption} /></Grid>
 
             {/* Indicadores */}
             <Grid container size={{ xs: 12, md: 9 }} >
