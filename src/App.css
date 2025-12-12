@@ -1,49 +1,68 @@
-body {
-  background-color: #ecfdffff;
+/* ----------- Fondo de día ----------- */
+.bg-day {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #d5f5ff, #abe7ff, #fef9c3);
+  transition: background 1.5s ease-in-out;
 }
 
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* ----------- Fondo de noche ----------- */
+.bg-night {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #615A9E, #835A9E , #9E5A97 );
+  transition: background 1.5s ease-in-out;
+  position: relative;
+  overflow: hidden;
+  --text-color: #ffddeb;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+body, h1 {
+  color: var(--text-color);
 }
 
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+/* ----------- Estrellas ----------- */
+.bg-night::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: url('/stars.png') repeat;
+  opacity: 0.25;
+  animation: starsMove 60s linear infinite;
 }
 
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
+@keyframes starsMove {
   from {
-    transform: rotate(0deg);
+    transform: translate(0, 0);
   }
 
   to {
-    transform: rotate(360deg);
+    transform: translate(-200px, -200px);
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.bg-day,
+.bg-night {
+  min-height: 100vh;
+  width: 100%;
 }
 
-.card {
-  padding: 2em;
+.content {
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.read-the-docs {
-  color: #888;
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  text-align: center;
 }
+
