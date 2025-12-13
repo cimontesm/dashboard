@@ -19,9 +19,9 @@ export interface CurrentUnits {
   interval: string
   temperature_2m: string
   relative_humidity_2m: string
-  wind_speed_10m: string
   apparent_temperature: string
   is_day: string
+  wind_speed_10m: string
 }
 
 export interface Current {
@@ -29,9 +29,9 @@ export interface Current {
   interval: number
   temperature_2m: number
   relative_humidity_2m: number
-  wind_speed_10m: number
   apparent_temperature: number
   is_day: number
+  wind_speed_10m: number
 }
 
 export interface HourlyUnits {
@@ -50,10 +50,12 @@ export interface DailyUnits {
   time: string
   sunrise: string
   sunset: string
+  precipitation_probability_max: string
 }
 
 export interface Daily {
   time: string[]
   sunrise: string[]
   sunset: string[]
+  precipitation_probability_max: number[]
 }

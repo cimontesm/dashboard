@@ -51,7 +51,7 @@ function App() {
             <Grid size={{ xs: 12, md: 12 }}><HeaderUI /></Grid>
 
             {/* Alertas */}
-            <Grid size={{ xs: 12, md: 12 }} borderRadius={1}><AlertUI description="No se preveen lluvias" /></Grid>
+            <Grid size={{ xs: 12, md: 12 }} borderRadius={1}><AlertUI description={"Probabilidad de lluvia de hoy: "+`${data.daily.precipitation_probability_max[0]} ${data.daily_units.precipitation_probability_max}`} /></Grid>
 
             {/* Selector */}
             <Grid size={{ xs: 12, md: 3 }} borderRadius={1}><SelectorUI onOptionSelect={setSelectedOption} /></Grid>

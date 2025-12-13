@@ -52,9 +52,9 @@ const theme = createTheme({
       light: {
          palette: {
             DataGrid: {
-               bg: '#fcfcf8ff',
-               pinnedBg: '#f6f9f1ff',
-               headerBg: '#f5f5eaff',
+               bg: '#ffffebff',
+               pinnedBg: '#cbe799ff',
+               headerBg: '#ffffd4ff',
             },
          },
       },

@@ -22,7 +22,7 @@ export default function AlertUI(config: AlertConfig) {
                         borderRadius: 8,
                         // estilos específicos por modo
                         backgroundColor: prefersDark ? '#0a3832ff' : '#f8ffef07',
-                        color: prefersDark ? '#f1f7f3ff' : '#85c478ff',
+                        color: prefersDark ? '#f1f7f3ff' : '#53ad41ff',
                         border: `1px solid ${prefersDark ? '#65ffccff' : '#76ad55ff'}`,
                     },
                 },
